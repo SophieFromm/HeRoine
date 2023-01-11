@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Instructions Helicopter Task</title>
+  <link rel="stylesheet" href="css/instruction.css" />
+  <script src="jatos.js"></script>
+</head>
+
+<body id="instruction" onload=[findBrowser(),jatos.onLoad()]>
+
+  <div id="preload">
+    <img src='css/img/clouds.png' class='background' id='clouds'>
+    <img src='css/img/helicopter.png' class='background' style="width: 350px; bottom: 86px;">
+    <img src="css/img/bag_euro.png" width="1" height="1" />
+    <img src="css/img/bag_neutral.png" width="1" height="1" />
+    <img src="css/img/arrows.png" width="1" height="1" />
+    <img src="css/img/background.jpg" width="1" height="1" />
+  </div>
+
+  <div class="content" id="Page0" style="display:block; cursor:pointer">
+    <p>Welcome to the computer game as part of the study!
+      <br><br>Later, you are going to hear sounds. Please hit each of the speaker buttons below at least once, to hear
+      all sounds and to make sure that the volume is fine.<br><br>
+      <input type="image" src="css/img/Speaker_Icon.png" onclick="eurowin.play()" style="width: 5%">
+      <input type="image" src="css/img/Speaker_Icon.png" onclick="sandwin.play()" style="width: 5%">
+      <input type="image" src="css/img/Speaker_Icon.png" onclick="loss.play()" style="width: 5%">
+      <br><br><br>We are now going to explain how the game works. Use the <b>RIGHT ARROW</b> on your keyboard to move to
+      the next page and the <b>LEFT ARROW</b> to move to the previous page.
+    </p>
+  </div>
+
+
+  <div id="Page1" class="content" style="display:none;">
+    <img src='css/img/arrows.png' class='background' id='arrows'>
+    <p> Hi, thanks for participating! No need to be surprised that you don't see your mouse as a cursor on the window anymore.
+      That's fine, you won't need it during the game.
+      <br><br>Please don't reload the page or use the arrow buttons of your browser since this will terminate the
+      experiment and prevent you from getting your reward. Also, don't open the link in a second tab and be sure to keep
+      your browser window full-sized throughout the
+      experiment.<br><br>Do us the favour to pay attention while working on the task. Otherwise, we must exclude you
+      from the experiment and you may not receive your reward.
+  </div>
+
+  <div id="Page2" class="content" style="display:none">
+    <img src='css/img/arrows.png' class='background' id='arrows'>
+    <p>Later you will see a helicopter. Bags with money will drop from the helicopter. Your task is to catch
+      them.<br><br>Try to win as much money as possible.<br>The money you win will turn into real payment after the
+      experiment.</p>
+  </div>
+
+  <div id="Page3" class="content" style="display:none">
+    <img src='css/img/arrows.png' class='background' id='arrows'>
+    <p>This is the helicopter when the sky is clear.</p>
+    <img src='css/img/helicopter.png' class='background' style="width: 320px; bottom: 86px;">
+  </div>
+
+  <div id="Page4" class="content" style="display:none" , onclick="BagFalls(event)">
+    <p></br>The mouse moves the cursor as a bucket. You use the bucket to catch what the helicopter drops. Try to
+      position the bucket directly under the helicopter.<br><br>
+      Press the left mouse button to confirm. Then, the cursor will turn black and stop moving.<br>Give it a try and
+      move forward to the next part of the instruction.</p>
+    <img src='css/img/arrows.png' class='background' id='arrows'>
+    
+    <div class='line' , id='line'>
+      <div id='Bagmarker', style = 'left:15%'></div>
+      <div id='animateBar'></div>
+      <div id='heli', style = 'left:5%'></div>
+      <div id='animateBag', style='display:block; left: 10%'>
+        <img id = 'BagCont', src = "css/img/bag_euro.png" style = "width:50%"/>
+      </div>
+    </div>
+  </div>
+
+  <div class="content" id="Page5" style="display:none">
+    <p></br>After you clicked, you see the distance between your bucket and its actual position.<br><br>Later you will
+      only have 3 seconds to decide.
+    </p>
+    <img src='css/img/arrows.png' class='background' id='arrows'>
+    <div class='line' , id='clickarea'></div>
+    <div class='line' , id='PredictionError'></div>
+    <div class='line' , id='line'>
+      <div id='Bagmarker' style='display: block' ;></div>
+      <div id='animateBar'></div>
+      <div id='heli' style="left:50px"></div>
+      <div id='animateBag'>
+        <img src = "css/img/bag_euro.png" style = "width:50%"/>
+      </div>
+      <div id='PE_instr_line'></div>
+    </div>
+  </div>
+
+
+  <div class="content" id="Page6" style="display:none">
+    <img src='css/img/arrows.png' class='background' id='arrows'>
+    <p>Sometimes the helicopter drops a money bag.<br> When you catch it you will receive money.
+    </p>
+    <div class='line' , id='line'>
+      <div id='eurobag'style="left:40px">
+           <img src = "css/img/bag_euro.png" style = "width:50%"/>
+      </div>
+      <div id='heli' style="left:50px"></div>
+    </div>
+  </div>
+
+
+  <div class="content" id="Page7" style="display:none">
+    <img src='css/img/arrows.png' class='background' id='arrows'>
+    <p>
+      Other times, the helicopter drops a sand bag.<br>You will not get money for it.<br>Try to catch it anyway!
+      <br><br>Where exactly the bag drops will vary. How much it varies will depend on whether it is more or less
+      windy. Thus, the location of the bag depends on the location of the helicopter and how windy it is.
+    </p>
+    <div class='line' , id='line'>
+      <div id='eurobag' style="left:40px">
+        <img src = "css/img/bag_neutral.png" style = "width:50%"/>
+      </div>
+      <div id='heli' style="left:50px"></div>
+    </div>
+  </div>
+
+
+  <div id="Page8" style="display:none">
+    <img src='css/img/arrows.png' class='background' id='arrows'>
+    <p>
+      Usually, the helicopter stays in the same place.<br>Occasionally, it moves to a completely new location.
+    </p>
+    <div class='line' , id='line'>
+      <div id='heli' , style='left:80%'></div>
+    </div>
+  </div>
+
+  <div id="Page9" style="display:none; cursor:pointer ">
+    <img src='css/img/arrows.png' class='background' id='arrows'>
+    <p style="text-align:left; margin: 8%;">For each statement, check the correct box. <br><br><br>I will get additional
+      reward after
+      the experiment if I ...<br><br>
+      <input type="checkbox" id="wrong1" value="wrong"> click on the helicopter<br>
+      <input type="checkbox" id="right1" value="right"> catch a bag with money<br>
+      <input type="checkbox" id="wrong2" value="wrong"> react as fast as possible<br>
+      <input type="checkbox" id="wrong3" value="wrong"> catch a sand bag or a bag with money<br>
+      <br><br>The location of the bag depends on ...<br><br>
+      <input type="checkbox" id="wrong4" value="wrong"> the location of the helicopter<br>
+      <input type="checkbox" id="wrong5" value="wrong"> whether the previous bag contained sand or money<br>
+      <input type="checkbox" id="wrong6" value="wrong"> whether I caught a bag before<br>
+      <input type="checkbox" id="right2" value="right"> the location of the helicopter and how windy it is
+  </div>
+  </div>
+
+  <div id="Page10" style="display:none; cursor:pointer ">
+    <img src='css/img/clouds.png' class='background' id='clouds'>
+    <p>
+      <br>Later the sky will be cloudy. Everything else works the same way. However, you won't be able to see the helicopter and have to learn its position by trial and error.
+      <br>We will now start with a small practice round and then move on to the task. You will have to complete 4 runs. This takes about 20 minutes in total.
+      <br><br>If you are ready, please click the button. Again, you always have 3 seconds to position your bucket
+      by clicking on the line. In the first trial, you will just have to make a guess.
+    </p>
+    <button onclick="nextComponent()">Start Game</button>
+  </div>
+
+  <script type='text/javascript' src='js/js_instruction.js'></script>
+  <script type='text/javascript' src="js/findBrowserName.js"></script>
+
+</html>

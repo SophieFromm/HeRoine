@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Helicopter Task</title>
+    <link rel="stylesheet" href="css/instruction.css" />
+    <script src="jatos.js"></script>
+</head>
+
+<body id="runpractice" onload=jatos.onLoad()>
+    <div id="preload">
+        <img src='css/img/clouds.png' class='background'>
+        <img src='css/img/helicopter.png' class='background' style="width: 350px; bottom: 86px;">
+        <img src="css/img/bag_euro.png" width="1" height="1" />
+        <img src="css/img/bag_neutral.png" width="1" height="1" />
+        <img src="css/img/arrows.png" width="1" height="1" />
+        <img src="css/img/background.jpg" width="1" height="1" />
+    </div>
+
+    <div id = "FullScreenHint"> 
+        <p><br><br>Press space to enter full screen mode and start the game...</p>
+   </div>
+
+
+    <div id="Page0" style="display:none">
+        <img src='css/img/clouds.png' class='background' id='clouds'>
+
+        <div id='clickarea' , onclick="BagFalls(event)"></div>
+        <div id='Slow' style='display:none'>
+            <p style='font-size: 200%;'><br><br>Too slow!</p>
+        </div>
+
+        <div class='line' , id='line'>
+            <div id='PredictionError'></div>
+            <div id='Bagmarker'></div>
+            <div id='animateBar'></div>
+            <div id='heli' style='display:none'></div>
+            <div id='animateBag', style='display:block'>
+                <img id = 'BagCont', src = "css/img/bag_euro.png" style = "width:50%"/>
+              </div>
+        </div>
+    </div>
+
+
+    <div id="Page1" style="display:none; cursor:pointer; margin:auto">
+        <p style = "padding:5%">These were the practice trials. Now you know how to play the game.
+            <br><br>Let's go ahead with the first run and see how much gold you can catch. If you want to move on, press the button to proceed.<br><br>
+            <button onclick="nextComponent()">Proceed</button>
+        </p>
+    </div>
+
+    <script type='text/javascript' src='js/js_instruction.js'></script>
+
+</body>
+
+</html>
